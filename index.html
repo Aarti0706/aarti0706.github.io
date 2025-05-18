@@ -1,0 +1,574 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arun & Co.</title>
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* Site Title and Sign Up Button */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #0056b3;
+      color: white;
+      padding: 15px 30px;
+    }
+
+    .site-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .signup-btn {
+      background-color: #f5f8fb;
+      border: none;
+      padding: 10px 15px;
+      color: rgb(4, 3, 3);
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .signup-btn i {
+      margin-right: 8px;
+    }
+
+    .signup-btn:hover {
+      background-color: #ff3d00;
+    }
+
+    /* Space between site title and navigation links */
+    .nav-space {
+      margin-top: 20px;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background-color: #0056b3;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 0 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .nav-bar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Scrolling Product Section */
+    .product-section {
+      padding: 30px 20px;
+      background-color: #fff;
+      margin: 20px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .product-section h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    .product-gallery {
+      display: flex;
+      overflow: hidden;
+      gap: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .product-gallery .product-item {
+      text-align: center;
+      width: 200px;
+    }
+
+    .product-gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-gallery .product-name {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .product-gallery a {
+      display: block;
+    }
+
+    /* Arrows for Scrolling */
+    .arrow-left,
+    .arrow-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .arrow-left {
+      left: 10px;
+    }
+
+    .arrow-right {
+      right: 10px;
+    }
+
+    /* About Us Section */
+    .about-us-section {
+      background-color: #fff;
+      padding: 40px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+    }
+
+    .about-us-section h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    .about-us-content {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-us-content p {
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+      color: #007bff;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    .read-more:hover {
+      text-decoration: underline;
+    }
+
+    /* Company Details Section */
+    .company-details-section {
+      background-color: #fff;
+      padding: 40px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+    }
+
+    .company-details-section h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #007bff;
+      margin-bottom: 15px;
+    }
+
+    .company-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .company-details .detail-item {
+      flex: 1 1 calc(33% - 40px);
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .company-details .detail-item i {
+      font-size: 30px;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .company-details .detail-item h4 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .company-details .detail-item p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    /* Compact Table Section */
+    .hsn-table-section {
+      margin-top: 40px;
+    }
+
+    .hsn-table {
+      width: 60%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .hsn-table th,
+    .hsn-table td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    .hsn-table th {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+    }
+
+    .hsn-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .hsn-table tr:hover {
+      background-color: #eaeaea;
+    }
+
+    .hsn-table td {
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header Section with Site Title and Sign Up Button -->
+  <div class="header">
+    <div class="site-title">Arun & Co.</div>
+
+    <!-- Sign Up Button with Icon -->
+    <a href="/sign-up.html">
+      <button class="signup-btn">
+        <i class="fas fa-user-plus"></i> Sign Up
+      </button>
+    </a>
+  </div>
+</head>
+<body>
+
+  <!-- Space between Site Title and Navigation Bar -->
+  <div class="nav-space"></div>
+
+  <!-- Navigation Bar -->
+  <div class="nav-bar">
+    <a href="/index.html">Home</a>
+    <a href="/about-us.html">About Us</a>
+    <a href="/ourproduct.html">Our Products</a>
+    <a href="/contact-us.html">Contact Us</a>
+  </div>
+
+  <!-- Product Section with Arrows -->
+  <div class="product-section">
+    <h2>Our Products</h2>
+    
+    <!-- Arrows to control scrolling -->
+    <button class="arrow-left" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+    <button class="arrow-right" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+
+    <!-- Product Gallery -->
+    <div class="product-gallery" id="productGallery">
+      <div class="product-item">
+        <a href="#" target="_blank">
+          <img src="https://3.imimg.com/data3/KW/YG/MY-2467783/mild-steel-spring-washer-250x250.jpg" alt="Star Washer">
+          <div class="product-name">Star Washer</div>
+        </a>
+      </div>
+      <div class="product-item">
+        <a href="#" target="_blank">
+          <img src="https://3.imimg.com/data3/CR/CY/MY-2467783/stainless-steel-spring-washer-250x250.jpg" alt="Steel Spring Washer">
+          <div class="product-name">Steel Spring Washer</div>
+        </a>
+      </div>
+      <div class="product-item">
+        <a href="#" target="_blank">
+          <img src="https://3.imimg.com/data3/UQ/PI/MY-2467783/mild-steel-bolt-250x250.jpg" alt="Mild Steel Bolt">
+          <div class="product-name">Mild Steel Bolt</div>
+        </a>
+      </div>
+      <div class="product-item">
+        <a href="#" target="_blank">
+          <img src="https://3.imimg.com/data3/ND/QX/MY-2467783/stainless-steel-nut-250x250.jpg" alt="Stainless Steel Nut">
+          <div class="product-name">Stainless Steel Nut</div>
+        </a>
+      </div>
+      <div class="product-item">
+        <a href="#" target="_blank">
+          <img src="https://3.imimg.com/data3/BJ/LD/MY-2467783/disc-spring-washer-250x250.jpg" alt="Disc Spring Washer">
+          <div class="product-name">Disc Spring Washer</div>
+        </a>
+      </div>
+      <div class="product-item">
+        <a href="#" target="_blank">
+          <img src="https://3.imimg.com/data3/EU/LV/MY-2467783/high-tensile-bolt-250x250.jpg" alt="High Tensile Bolt">
+          <div class="product-name">High Tensile Bolt</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Us Section -->
+  <div class="about-us-section">
+    <h2>About Us</h2>
+    <div class="about-us-content">
+      <p>Arun & Co. is a sole proprietorship owned company, incorporated in the year 1986. The company has started business as a sole proprietorship owned firm as well as engaged in manufacturing, trading, wholesaling, and supplying a wide assortment of Dowel Pin, HSFG Washer, T Handle Allen Key Wrench, Metal Bolt, and Spring Washer. Constant improvement and innovation of products forms the core of our firm and make us the most favored choice of maximum clientele.</p>
+      <p class="read-more"><a href="/AboutUs.html">+ Read More</a></p>
+    </div>
+  </div>
+
+  <!-- Company Details Section -->
+  <div class="company-details-section">
+    <h2>Company Details</h2>
+    <div class="company-details">
+      <div class="detail-item">
+        <i class="fas fa-cogs"></i>
+        <h4>Nature of Business</h4>
+        <p>Retailer & Wholesaler</p>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-gavel"></i>
+        <h4>Legal Status</h4>
+        <p>Proprietorship</p>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-users"></i>
+        <h4>Number of Employees</h4>
+        <p>10</p>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-chart-line"></i>
+        <h4>Annual Turnover</h4>
+        <p>Upto 2 CR</p>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-file-invoice"></i>
+        <h4>GST No.</h4>
+        <p>19AKLPS3329R1Z5</p>
+      </div>
+      <div class="detail-item">
+        <i class="fas fa-calendar-alt"></i>
+        <h4>GST Registration Date</h4>
+        <p>01-07-2017</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HSN Code Table Section -->
+  <div class="hsn-table-section">
+    <h2>HSN Code and Description</h2>
+    <table class="hsn-table">
+      <thead>
+        <tr>
+          <th>HSN Code</th>
+          <th>HSN Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>73181110</td>
+          <td>Screws, bolts, nuts, coach-screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel - threaded articles : coach screws : machine screws</td>
+        </tr>
+        <tr>
+          <td>74152100</td>
+          <td>Nails, tacks, drawing pins, staples (other than those of heading 8305) and similar articles, of copper or of iron or steel with heads of copper; screws, bolts, nuts, screw hooks, rivets, cotters, cotterpins, washers (including spring washers) and similar articles, of copper - other articles, not threaded : washers (including spring washers)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+</body>
+</html>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 50;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* Get in Touch Navigation Bar */
+    .footer-contact-nav {
+      background-color: #007bff; /* Blue background to match the site theme */
+      padding: 20px;
+      text-align: left;
+      font-weight: bold;
+      color: white;
+      text-transform: uppercase;
+      margin-bottom: 20px; /* Added spacing between this bar and the footer */
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #0056b3; /* A deep blue shade */
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-top: 2px solid #004085; /* A darker blue to separate footer from content */
+    }
+
+    /* Left Side of Footer */
+    .footer-left,
+    .footer-right {
+      width: 48%;
+    }
+
+    /* Footer Links */
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin: 15px 0;
+    }
+
+    .footer-links a {
+      color: #f7f4f3; /* Soft orange color for links */
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600; /* Bold font style for links */
+      transition: color 0.3s ease; /* Smooth transition for hover */
+    }
+
+    .footer-links a:hover {
+      color: #ffffff; /* Change link color on hover */
+      text-decoration: underline;
+    }
+
+    /* Right Side of Footer */
+    .footer-right h4 {
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .footer-right p {
+      font-size: 16px;
+      color: white;
+      line-height: 1.6; /* Improved line height for readability */
+    }
+
+    .footer-right a {
+      color: #ff5733;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .footer-right a:hover {
+      text-decoration: underline;
+    }
+
+    /* Location Icon */
+    .location-icon {
+      margin-left: 10px;
+      font-size: 18px; /* Adjusted size for location icon */
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .footer-left, .footer-right {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Footer Navigation Bar -->
+  <div class="footer-contact-nav">
+    <a href="contact.html" style="color: white; text-decoration: none;">Get in Touch with Us</a>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <!-- Left Side: Footer Links -->
+    <div class="footer-left">
+      <ul class="footer-links">
+        <li><a href="/about-us.html">Our Company</a></li>
+        <li><a href="/Users/aartisaboo/pocs/HTML/AboutUs.html">About Us</a></li>
+        <li><a href="/ourproduct.html">Our Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="sitemap.html">Sitemap</a></li>
+        <li><a href="brochure.pdf" target="_blank">Download Brochure</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Side: Reach Us Information -->
+    <div class="footer-right">
+      <h4>Reach Us</h4>
+      <p>
+        Arun & Company<br />
+        81, Netaji Subhas Road, 2nd Floor, Unit No-215, Century Plaza, BBD Bagh, Kolkata-700001,<br />
+        West Bengal, India
+        <a href="https://www.google.com/maps?q=81,+Netaji+Subhas+Road,+Kolkata,+West+Bengal,+India" target="_blank">
+          <i class="fas fa-map-marker-alt location-icon" style="color: #ff5733;"></i>
+        </a>
+      </p>
+      <p>
+        <a href="https://www.google.com/maps?q=81,+Netaji+Subhas+Road,+Kolkata,+West+Bengal,+India" target="_blank">Get Directions</a>
+      </p>
+      <p>
+        Arun Kumar Saboo (Proprietor)
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,243 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Arun & Company</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f8fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0056b3;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      color: #0056b3;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .checkbox-dropdown {
+      position: relative;
+    }
+
+    .select-box {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .selected-items {
+      color: #555;
+    }
+
+    .options-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+      z-index: 1000;
+    }
+
+    .options-list label {
+      display: flex;
+      align-items: center;
+      padding: 8px 10px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .options-list input[type="checkbox"] {
+      transform: scale(0.9);
+      margin-right: 8px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .submit-button {
+      grid-column: span 2;
+      padding: 12px;
+      font-size: 1.1rem;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .submit-button:hover {
+      background-color: #00408f;
+    }
+
+    footer {
+      background-color: #0056b3;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .submit-button {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    </h1>Arun & Company</h1>
+    <a href="/index.html"></a>
+  </header>
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <form>
+      <div class="form-grid">
+
+        <div class="form-group checkbox-dropdown">
+          <label>Type of Item</label>
+          <div class="select-box" id="item-type-box">
+            <span class="selected-items">Select items</span>
+            <span><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="options-list" id="options-list">
+            <label><input type="checkbox" value="Dowel Pin"> Dowel Pin</label>
+            <label><input type="checkbox" value="HSFG Washer"> HSFG Washer</label>
+            <label><input type="checkbox" value="T Handle Allen Key Wrench"> T Handle Allen Key Wrench</label>
+            <label><input type="checkbox" value="Metal Bolt"> Metal Bolt</label>
+            <label><input type="checkbox" value="Spring Washer"> Spring Washer</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="company-name">Name of Company/Proprietor</label>
+          <input type="text" id="company-name" name="company-name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="proprietor-name">Name of Proprietor/Head of Company</label>
+          <input type="text" id="proprietor-name" name="proprietor-name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mobile-number">Mobile Number</label>
+          <input type="tel" id="mobile-number" name="mobile-number" required>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" required>
+        </div>
+
+        <div class="form-group">
+          <label>Are you looking for bulk purchase?</label>
+          <div class="radio-group">
+            <label><input type="radio" name="bulk-purchase" value="Yes" required> Yes</label>
+            <label><input type="radio" name="bulk-purchase" value="No" required> No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Approx. Quantity you are looking for</label>
+          <input type="number" id="quantity" name="quantity" required>
+        </div>
+
+        <button type="submit" class="submit-button">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Arun & Company. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const box = document.getElementById('item-type-box');
+    const list = document.getElementById('options-list');
+    const checkboxes = document.querySelectorAll('.options-list input[type="checkbox"]');
+    const selectedSpan = document.querySelector('.selected-items');
+
+    box.addEventListener('click', () => {
+      list.style.display = list.style.display === 'block' ? 'none' : 'block';
+    });
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        const selected = Array.from(checkboxes)
+          .filter(c => c.checked)
+          .map(c => c.value);
+        selectedSpan.textContent = selected.length ? selected.join(', ') : 'Select items';
+      });
+    });
+
+    window.addEventListener('click', e => {
+      if (!e.target.closest('.checkbox-dropdown')) {
+        list.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
